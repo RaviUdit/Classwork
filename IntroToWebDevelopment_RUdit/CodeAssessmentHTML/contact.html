@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<!--
+
+Name: Ravi Udit
+Date Created: August 7, 2021
+Last Modified: August 8, 2021
+
+-->
+
+<html lang="en">
+	<head>
+		<header>
+			<title> Contact Us </title>
+		</header>
+	</head>
+
+	<body>
+		<h1> Contact Us </h1>
+		<hr/>
+
+		<!-- Page Navigation.-->
+		<nav>
+		
+			<a href="index.html"> Home </a>
+			<a href="menu.html"> Menu </a>
+			<a href="contact.html"> Contact Us </a>
+		
+		</nav>
+		<hr/>
+		
+		<!-- Contact form-->
+		<article id="form">
+		
+		<form action="contact.html" method="POST">
+			Name: <input type="text" name="customerName" /><br/>
+			Email: <input type="text" name="customerEmail" /><br/>
+			Phone: <input type="text" name="customerPhone" /><br/>
+			Reason of Inquiry: <select name="roi">
+								<option value="catering"> Catering </option>
+								<option value="priparty"> Private Party </option>
+								<option value="feedback"> Feedback </option>
+								<option value="other"> Other </option>
+								</select><br/>
+			Additional Information: <textarea name="addInfo" > </textarea><br/>
+			Have You Been Here Before: <input type="radio" name="answer" value="YES"/> Yes 
+									   <input type="radio" name="answer" value="NO"/> No <br/>
+			Best Day To Contact You: <input type="checkbox" name="day" value="Sun"> Sun
+									 <input type="checkbox" name="day" value="Mon"> Mon
+									 <input type="checkbox" name="day" value="Mon"> Tue
+									 <input type="checkbox" name="day" value="Mon"> Wed
+									 <input type="checkbox" name="day" value="Mon"> Thur
+									 <input type="checkbox" name="day" value="Mon"> Fri
+									 <input type="checkbox" name="day" value="Mon"> Sat <br/>
+			<input type="submit" value="Send Request"/>
+
+									 
+		</form>
+		</article>
+		
+		<footer>		
+			<hr/>
+			<p> 42 Chapel Road. Ottawa, Ontario. K5E 5E5 </p>
+			<p> 555-555-5555</p>
+		</footer>
+	
+	</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<!--
+
+Name: Ravi Udit
+Date Created: August 7, 2021
+Last Modified: August 10, 2021
+
+-->
+
+<html lang="en">
+	<head>
+		<header>
+			<title> Contact Us </title>
+			<link href="restaurantStyles.css" rel="stylesheet" type="text/css" />
+			
+			
+			<!-- Internal Style Sheets-->			
+			<style>
+			
+				h1{
+					text-align: center;
+				}
+			
+				#form {
+					font-weight: bold; 
+				 }
+				 
+				 
+				body{
+					width: 1080px;
+				}
+				
+				textarea{
+					vertical-align: top; 
+				}
+				
+				label{
+					display: inline-block;
+					float: left;
+					clear: left;
+					width: 540px;
+					text-align: right;
+				}
+				
+				input, select, div{
+					display: inline-block;
+					float: left;
+					font-weight:normal;
+				}
+				
+				#submit{
+					transform: translate(500px);					
+				}
+			
+			</style>
+			
+			<h1> Dee Chana Hut </h1>
+		<hr/>
+		</header>
+	</head>
+ 
+	<body>
+		<h1> Contact Us </h1>
+		<hr/>
+
+		<!-- Page Navigation.-->
+		<nav>
+		
+			<a href="index.html"> Home </a>
+			<a href="menu.html"> Menu </a>
+			<a href="contact.html"> Contact Us </a>
+		
+		</nav>
+		<hr/>
+		
+		<!-- Contact form-->
+		
+		<article id="form">
+		
+		<form action="contact.html" method="POST">
+			<label>Name:</label> <input type="text" name="customerName" /><br/>
+			<label>Email:</label> <input type="text" name="customerEmail" /><br/>
+			<label>Phone:</label> <input type="text" name="customerPhone" /><br/>
+			<label>Reason of Inquiry:</label> <select name="roi">
+								<option value="catering"> Catering </option>
+								<option value="priparty"> Private Party </option>
+								<option value="feedback"> Feedback </option>
+								<option value="other"> Other </option>
+								</select><br/></br>
+			<label>Additional Information:</label> <textarea name="addInfo" > </textarea><br/>
+			<label>Have You Been Here Before:</label> <input type="radio" name="answer" value="YES"/> <div>Yes</div>
+									   <input type="radio" name="answer" value="NO"/> <div>No </div><br/> 
+			<label>Best Day To Contact You:</label> <input type="checkbox" name="day" value="Sun"> <div>Sun</div>
+									 <input type="checkbox" name="day" value="Mon"> <div>Mon</div>
+									 <input type="checkbox" name="day" value="Mon"> <div>Tue</div>
+									 <input type="checkbox" name="day" value="Mon"> <div>Wed</div>
+									 <input type="checkbox" name="day" value="Mon"> <div>Thur</div>
+									 <input type="checkbox" name="day" value="Mon"> <div>Fri</div>
+									 <input type="checkbox" name="day" value="Mon"> <div>Sat</div> <br/> <br/>
+			
+			<input id="submit" type="submit" value="Send Request"/><br/>
+		
+									 
+		</form>
+		</article>
+		
+		
+		<footer>		
+			<hr/>
+			<p> 42 Chapel Road. Ottawa, Ontario. K5E 5E5 </p>
+			<p> 555-555-5555</p>
+		</footer>
+	
+	</body>
+
+</html>
