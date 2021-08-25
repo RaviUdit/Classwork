@@ -25,10 +25,22 @@ document.addEventListener("DOMContentLoaded", function(){ //DOMContent waits for
     
     console.log("fields: customer name " + fields.customerName);
     
-    fields.email = document.getElementById('customerEmail');
-    fields.phoneNumber = document.getElementById('customerPhone');
-    fields.roi = document.getElementById('roi');
-    fields.addInfo = document.getElementById('addInfo');
+    fields.email = document.getElementById('customerEmail').value;
+    
+    console.log("fields: email " + fields.email);
+    
+    fields.phoneNumber = document.getElementById('customerPhone').value;
+    
+    console.log("fields: phone number " + fields.phoneNumber);
+    
+    fields.roi = document.getElementById('roi').value;
+    
+    console.log("fields: ROI " + fields.roi);
+    
+    fields.addInfo = document.getElementById('addInfo').value;
+    
+    console.log("fields: Add Info " + fields.addInfo);
+    
     fields.sunday = document.getElementById('sunday');
     fields.monday = document.getElementById('monday');
     fields.tuesday = document.getElementById('tuesday');
@@ -41,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function(){ //DOMContent waits for
 
 function previousVisit(){
     
-    return document.querySelector('input[name="answer"]:checked')
+    return document.querySelector('input[id="answer"]:checked')
 }
 
 function isNotEmpty(value) {
@@ -53,12 +65,21 @@ function isNotEmpty(value) {
 
 function isNumber(num){
     
+    var num = fields.phoneNumber;
+    
+    console.log("num =  " + num);
+    
     return (num.length > 0) && !isNaN(num);
 }
 
 function isValidEmail(email){
     
+    var email = fields.email;
+    
     let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+    
+    console.log("RegEx Test  " + regex.test(String(email).toLowerCase()));
+    
     return regex.test(String(email).toLowerCase());
 }
 
@@ -71,7 +92,7 @@ function fieldVal(field, validationFunc){
     if (!isFieldValid){
         field.className = 'placeHolderRed';
         } else {
-            field.className = '';
+        field.className = '';
     }
     
     return isFieldValid;
@@ -94,21 +115,21 @@ function validCustomer(){
 
 class Customer{
     
-    constructor (customerName, email, phoneNumber, roi, addInfo, sunday, monday, tuesday, wednesday, thursday, 
-        friday, saturday){
+    constructor (customerName, email, phoneNumber, roi, addInfo, previousVisit){
             
             this.customerName = customerName;
             this.email = email;
             this.phoneNumber = phoneNumber;
             this.roi = roi; 
             this.addInfo = addInfo; 
-            this.sunday = sunday;
+            this.prevVisit = previousVisit;
+        /*    this.sunday = sunday;
             this.monday = monday;
             this.tuesday = tuesday;
             this.wednesday = wednesday;
             this.thursday = thursday;
             this.friday = friday;
-            this.saturday = saturday;
+            this.saturday = saturday; */
     }
 }
 
@@ -117,11 +138,9 @@ function contactUs(){
     fields.prevVisit = previousVisit(); 
     
     if ( validCustomer()){
-        var cust = new Customer(customerName.value, email.value, phoneNumber.value, roi.value, 
-            fields.prevVisit.value);
-            
-
-            
+        var cust = new Customer(customerName.value, email.value, phoneNumber.value, roi.value, addinfo.value, 
+            previousVisit.checked);
+             
             alert ('Thanks for reaching out!')
         } else {
             alert('Information Missing! Please Try Again.')

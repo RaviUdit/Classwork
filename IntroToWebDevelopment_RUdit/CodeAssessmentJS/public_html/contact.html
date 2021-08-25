@@ -46,7 +46,7 @@ Last Modified: August 10, 2021
 					display: inline-block;
 					float: left;
 					clear: left;
-					width: 540px;
+					width: 50%;
 					text-align: right;
 				}
 				
@@ -55,11 +55,14 @@ Last Modified: August 10, 2021
 					float: left;
 					font-weight:normal;
 				}
-				
+                                      
 				#submit{
-					transform: translate(500px);					
+					display:block;
+                                        margin:auto;
 				}
-			
+                                
+                               
+                              
             </style>
 
 	</head>
@@ -94,17 +97,17 @@ Last Modified: August 10, 2021
 		
                     <form action="..." method="POST" onsubmit="return false">
 			<label>Name:</label> <input type="text" id="customerName" /><br/>
-			<label>Email:</label> <input type="email" name="customerEmail" /><br/>
-			<label>Phone:</label> <input type="text" name="customerPhone" /><br/>
-			<label>Reason of Inquiry:</label> <select name="roi">
+			<label>Email:</label> <input type="email" id="customerEmail" /><br/>
+			<label>Phone:</label> <input type="text" id="customerPhone" /><br/>
+			<label>Reason of Inquiry:</label> <select id="roi">
 								<option value="catering"> Catering </option>
 								<option value="priparty"> Private Party </option>
 								<option value="feedback"> Feedback </option>
 								<option value="other"> Other </option>
-								</select><br/></br>
-			<label>Additional Information:</label> <textarea name="addInfo" > </textarea><br/>
-			<label>Have You Been Here Before:</label> <input type="radio" name="answer" value="YES"/> <div>Yes</div>
-								  <input type="radio" name="answer" value="NO"/> <div>No </div><br/> 
+                                                          </select></br></br></br>
+			<label>Additional Information:</label> <textarea id="addInfo" > </textarea><br/>
+			<label>Have You Been Here Before:</label> <input type="radio" id="answer" name="answer" value="YES"/> <div>Yes</div>
+								  <input type="radio" id="answer" name="answer" value="NO"/> <div>No </div><br/> 
 			<label>Best Day To Contact You:</label> <input type="checkbox" name="sunday" value="Sun"> <div>Sun</div>
 								<input type="checkbox" name="monday" value="Mon"> <div>Mon</div>
 								<input type="checkbox" name="tuesday" value="Tue"> <div>Tue</div>
@@ -112,9 +115,9 @@ Last Modified: August 10, 2021
 								<input type="checkbox" name="thursday" value="Thur"> <div>Thur</div>
 								<input type="checkbox" name="friday" value="Fri"> <div>Fri</div>
 								<input type="checkbox" name="saturday" value="Sat"> <div>Sat</div> <br/> <br/>
-
-                         <input id="submit" type="submit" value="Send Request" onclick="contactUs();"/><br/>
-		
+                        
+                                                                   
+                                                                <button id="submit" type="submit" onclick="contactUs();">Send Request</button> <br/>
 									 
 		</form>
 		</article>
