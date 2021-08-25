@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+
+<!--
+
+Name: Ravi Udit
+Date Created: August 7, 2021
+Last Modified: August 10, 2021
+
+-->
+
+<html lang="en">
+	<head>
+
+        <title> Contact Us </title>
+            
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">    
+        
+         <!-- BootStrap CDN Copied from getbootstrap.com -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        
+        <!-- JavaScript -->
+        
+        <script type="text/javascript" src="contactForm.js"></script>
+        
+        <link href="restaurantStyles.css" rel="stylesheet" type="text/css" /> 
+                    
+         <!-- Internal Style Sheets-->			
+            <style>
+			
+				h1{
+					text-align: center;
+				}
+			
+				#form {
+					font-weight: bold; 
+				 }
+
+				
+				textarea{
+					vertical-align: top; 
+				}
+				
+				label{
+					display: inline-block;
+					float: left;
+					clear: left;
+					width: 540px;
+					text-align: right;
+				}
+				
+				input, select, div{
+					display: inline-block;
+					float: left;
+					font-weight:normal;
+				}
+				
+				#submit{
+					transform: translate(500px);					
+				}
+			
+            </style>
+
+	</head>
+ 
+	<body>
+            
+            <noscript> This website uses javascript to bring you the full flavour of the Islands. Please enable javascript and reload the page.</noscript>
+            
+            <header>
+                    
+			<h1> Dee Chana Hut </h1>
+		<hr/>
+            </header>
+            
+            
+		<h1> Contact Us </h1>
+		<hr/>
+
+		<!-- Page Navigation.-->
+		<nav>
+		
+			<a href="index.html"> Home </a>
+			<a href="menu.html"> Menu </a>
+			<a href="contact.html"> Contact Us </a>
+		
+		</nav>
+		<hr/>
+		
+		<!-- Contact form-->
+		
+		<article id="form">
+		
+                    <form action="..." method="POST" onsubmit="return false">
+			<label>Name:</label> <input type="text" id="customerName" /><br/>
+			<label>Email:</label> <input type="email" name="customerEmail" /><br/>
+			<label>Phone:</label> <input type="text" name="customerPhone" /><br/>
+			<label>Reason of Inquiry:</label> <select name="roi">
+								<option value="catering"> Catering </option>
+								<option value="priparty"> Private Party </option>
+								<option value="feedback"> Feedback </option>
+								<option value="other"> Other </option>
+								</select><br/></br>
+			<label>Additional Information:</label> <textarea name="addInfo" > </textarea><br/>
+			<label>Have You Been Here Before:</label> <input type="radio" name="answer" value="YES"/> <div>Yes</div>
+								  <input type="radio" name="answer" value="NO"/> <div>No </div><br/> 
+			<label>Best Day To Contact You:</label> <input type="checkbox" name="sunday" value="Sun"> <div>Sun</div>
+								<input type="checkbox" name="monday" value="Mon"> <div>Mon</div>
+								<input type="checkbox" name="tuesday" value="Tue"> <div>Tue</div>
+								<input type="checkbox" name="wednesday" value="Wed"> <div>Wed</div>
+								<input type="checkbox" name="thursday" value="Thur"> <div>Thur</div>
+								<input type="checkbox" name="friday" value="Fri"> <div>Fri</div>
+								<input type="checkbox" name="saturday" value="Sat"> <div>Sat</div> <br/> <br/>
+
+                         <input id="submit" type="submit" value="Send Request" onclick="contactUs();"/><br/>
+		
+									 
+		</form>
+		</article>
+		
+		
+		<footer>		
+			<hr/>
+			<p> 42 Chapel Road. Ottawa, Ontario. K5E 5E5 </p>
+			<p> 555-555-5555</p>
+		</footer>
+
+        <!<!-- CDN Links copied from getbootstrap.com -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" 
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" 
+                crossorigin="anonymous"></script>                
+                
+	</body>
+
+</html>

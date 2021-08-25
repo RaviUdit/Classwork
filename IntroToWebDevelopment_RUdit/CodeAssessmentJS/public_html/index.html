@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+
+<!--
+
+Name: Ravi Udit
+Date Created: August 7, 2021
+Last Modified: August 10, 2021
+
+-->
+
+<html lang="en">
+	<head>
+            
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <!-- BootStrap CDN Copied from getbootstrap.com -->
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+                              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+            <!-- Link Stylesheet -->
+            <link href="restaurantStyles.css" rel="stylesheet" type="text/css" />
+            
+            <!--Bootstrap Icons Stylesheet -->
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"> 
+            
+             <!-- CDN Links copied from getbootstrap.com -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" 
+                    crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" 
+                    crossorigin="anonymous"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+               
+            <title> Home Page </title>
+
+            <style>
+                body{
+                    background-color: black;
+                    color: white;
+                }
+
+                @font-face{
+                    font-family: carribean;
+                    src: url('../fonts/carribean.woff') format('woff'),
+                        url('../fonts/caribbean.woff2') format('woff2');
+                    
+
+                }
+                
+                nav .btn{
+                    background-color: #DA1A35;
+                    color: #FFFFFF;
+                }
+                
+                .jumbotron{
+                    background-image: url("../images/daal.jpg");
+                    background-siz: cover;
+                }
+
+                .center {
+                  display: block;
+                  margin-left: auto;
+                  margin-right: auto;
+                  width: 99%;
+                }
+
+            </style>
+            
+            <!-- Link OpenIconic -->
+            <link href="../font/css/open-iconic-bootstrap.css" rel="stylesheet"/>		
+
+	</head>
+
+	<body>
+            <noscript> This website uses javascript to bring you the full flavour of the Islands. Please enable javascript and reload the page.</noscript>
+            
+            <header>
+		<h1 style=font-family:carribean> D e e  C h a n a  H u t </h1>
+		<hr/>		
+            </header>
+            
+            <header class="jumbotron jumbotron-fluid">
+                <h3 class="text-right mt-5 font-italic"> We're Opening A New Location!</h3>
+            </header>
+
+		<!-- Page Navigation.-->
+		<nav>
+		
+                    <a class="btn badge-pill" href="index.html"> <i class="bi-house-fill"></i> Home </a>
+                    <a class="btn badge-pill" href="menu.html"> Menu </a>
+                    <a class="btn badge-pill" href="contact.html"> Contact Us </a>
+		
+		</nav>
+		<hr/>
+		
+                <div class ="container">
+		
+                <!-- Home Page Body-->
+		<article id="Restaurant">
+                    
+                    <div class="row">
+                        <div class="col-lg-6 col-md">
+                        <img src="../images/DeeChanaHut.jpg" alt="Real Trini Home Cooking" class="center"/>
+			<h3 style="text-align:center;"> Visit Dee Chana Hut! </h3>
+                        
+                        </div>
+                    
+                        <div class="col-lg-6 col-md">
+			<p > If you're craving a real taste of Carribean Flavour, come down to Dee Chana Hut; Ottawa's premier 
+			destination for authetic island cooking. Our owner and head chef has a carefully curated selection of recipes 
+			from his childhood growing up on the islands of Trinidad and Tobago, ready to share with our customers. </p>
+			<p > Come taste this exciting blend of West African, Indian, European and Aboriginal flavours. We serve 
+			only the most authenthic food with a down home spice blend that will send yuh ta da moon 'n bahc mon.  
+			Savour the flavour of de Islands. Come down to Dee Chana Hut.</p>
+                        </div>
+                    </div>
+		</article>
+               
+                </div>
+                
+                
+                <!-- Carousel -->
+                <div class="container mt-3">
+
+                <div id="chanaHutCarousel" class="carousel slide" data-ride="carousel">
+
+                  <!-- Indicators -->
+                  <ul class="carousel-indicators">
+                    <li data-target="#chanaHutCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#chanaHutCarousel" data-slide-to="1"></li>
+                    <li data-target="#chanaHutCarousel" data-slide-to="2"></li>
+                  </ul>
+
+                  <!-- The slideshow -->
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <img src="../images/NewLocation.jpg" alt="NewLocation" width="1100" height="500">
+                      <div class="carousel-caption">
+                            <h4>New Location Opening Soon!</h4>
+                            <p>Join us at our new Barrhaven location opening in November!</p>
+                            </div>
+                    </div>
+                      
+                    <div class="carousel-item">
+                      <img src="../images/SeasMenu.jpg" alt="SeasonalMenu" width="1100" height="500">
+                      <div class="carousel-caption">
+                             <h4>Mouth Watering Seasonal Menu</h4>
+                             <p>Add some spice to your life with our all new seasonal menu!</p>
+                      </div>                      
+                    </div>
+                      
+                    <div class="carousel-item">
+                      <img src="../images/SGML.jpg" alt="MangoLassi" width="1100" height="500">
+                      <div class="carousel-caption">
+                              <h4>SG Mango Lassi!</h4>
+                              <p>A refreshing summer drink; made with help from our friends at The Software Guild</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Left and right controls -->
+                  <a class="carousel-control-prev" href="#chanaHutCarousel" data-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                  </a>
+                  <a class="carousel-control-next" href="#chanaHutCarousel" data-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                  </a>
+                </div>
+
+                </div>
+
+                </div>
+                
+		<footer>		
+			<hr/>
+			<p> 42 Chapel Road. Ottawa, Ontario. K5E 5E5 </p>
+			<p> 555-555-5555</p>
+		</footer>
+                
+ 
+	</body>
+
+</html>
