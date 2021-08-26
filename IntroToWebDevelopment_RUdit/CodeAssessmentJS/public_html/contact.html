@@ -61,6 +61,11 @@ Last Modified: August 10, 2021
                                         margin:auto;
 				}
                                 
+                                .error{
+                                      border: 2px solid red;
+                                      border-radius: 4px;
+                                }
+                                
                                
                               
             </style>
@@ -95,6 +100,11 @@ Last Modified: August 10, 2021
 		
 		<article id="form">
 		
+                    <!--August 25th, 2021. 15:43
+                    
+                    changed [name] element to [id] element.
+                    
+                    -->
                     <form action="..." method="POST" onsubmit="return false">
 			<label>Name:</label> <input type="text" id="customerName" /><br/>
 			<label>Email:</label> <input type="email" id="customerEmail" /><br/>
@@ -108,13 +118,13 @@ Last Modified: August 10, 2021
 			<label>Additional Information:</label> <textarea id="addInfo" > </textarea><br/>
 			<label>Have You Been Here Before:</label> <input type="radio" id="answer" name="answer" value="YES"/> <div>Yes</div>
 								  <input type="radio" id="answer" name="answer" value="NO"/> <div>No </div><br/> 
-			<label>Best Day To Contact You:</label> <input type="checkbox" name="sunday" value="Sun"> <div>Sun</div>
-								<input type="checkbox" name="monday" value="Mon"> <div>Mon</div>
-								<input type="checkbox" name="tuesday" value="Tue"> <div>Tue</div>
-								<input type="checkbox" name="wednesday" value="Wed"> <div>Wed</div>
-								<input type="checkbox" name="thursday" value="Thur"> <div>Thur</div>
-								<input type="checkbox" name="friday" value="Fri"> <div>Fri</div>
-								<input type="checkbox" name="saturday" value="Sat"> <div>Sat</div> <br/> <br/>
+			<label>Best Day To Contact You:</label> <input type="checkbox" id="sunday" value="Sun"> <div>Sun</div>
+								<input type="checkbox" id="monday" value="Mon"> <div>Mon</div>
+								<input type="checkbox" id="tuesday" value="Tue"> <div>Tue</div>
+								<input type="checkbox" id="wednesday" value="Wed"> <div>Wed</div>
+								<input type="checkbox" id="thursday" value="Thur"> <div>Thur</div>
+								<input type="checkbox" id="friday" value="Fri"> <div>Fri</div>
+								<input type="checkbox" id="saturday" value="Sat"> <div>Sat</div> <br/> <br/>
                         
                                                                    
                                                                 <button id="submit" type="submit" onclick="contactUs();">Send Request</button> <br/>
@@ -129,7 +139,7 @@ Last Modified: August 10, 2021
 			<p> 555-555-5555</p>
 		</footer>
 
-        <!<!-- CDN Links copied from getbootstrap.com -->
+        <!-- CDN Links copied from getbootstrap.com -->
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" 
                 crossorigin="anonymous"></script>

@@ -21,25 +21,25 @@ var fields={};
 document.addEventListener("DOMContentLoaded", function(){ //DOMContent waits for the html page to fully load before
                                                           //population these variables.
  
-    fields.customerName = document.getElementById('customerName').value;
+    fields.customerName = document.getElementById('customerName');
     
-    console.log("fields: customer name " + fields.customerName);
+    console.log("fields: customer name " + fields.customerName.value);
     
-    fields.email = document.getElementById('customerEmail').value;
+    fields.email = document.getElementById('customerEmail');
     
-    console.log("fields: email " + fields.email);
+    console.log("fields: email " + fields.email.value);
     
-    fields.phoneNumber = document.getElementById('customerPhone').value;
+    fields.phoneNumber = document.getElementById('customerPhone');
     
-    console.log("fields: phone number " + fields.phoneNumber);
+    console.log("fields: phone number " + fields.phoneNumber.value);
     
-    fields.roi = document.getElementById('roi').value;
+    fields.roi = document.getElementById('roi');
     
-    console.log("fields: ROI " + fields.roi);
+    console.log("fields: ROI " + fields.roi.value);
     
-    fields.addInfo = document.getElementById('addInfo').value;
+    fields.addInfo = document.getElementById('addInfo');
     
-    console.log("fields: Add Info " + fields.addInfo);
+    console.log("fields: Add Info " + fields.addInfo.value);
     
     fields.sunday = document.getElementById('sunday');
     fields.monday = document.getElementById('monday');
@@ -52,8 +52,7 @@ document.addEventListener("DOMContentLoaded", function(){ //DOMContent waits for
 })
 
 function previousVisit(){
-    
-    return document.querySelector('input[id="answer"]:checked')
+    return document.querySelector("input[name='answer']:checked")
 }
 
 function isNotEmpty(value) {
@@ -65,16 +64,12 @@ function isNotEmpty(value) {
 
 function isNumber(num){
     
-    var num = fields.phoneNumber;
-    
     console.log("num =  " + num);
     
     return (num.length > 0) && !isNaN(num);
 }
 
 function isValidEmail(email){
-    
-    var email = fields.email;
     
     let regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
     
@@ -83,31 +78,38 @@ function isValidEmail(email){
     return regex.test(String(email).toLowerCase());
 }
 
-function fieldVal(field, validationFunc){
+function validateField(field, validationFunc){
     
     if (field == null) return false;
     
     let isFieldValid = validationFunc(field.value);
     
     if (!isFieldValid){
-        field.className = 'placeHolderRed';
-        } else {
+        field.className = 'error';
+    } else {
         field.className = '';
     }
     
     return isFieldValid;
 }
 
-function validCustomer(){
+function isValidCustomer(){
     
     var valid = true;
     
-    valid &= fieldVal(fields.customerName, isNotEmpty);
-    valid &= fieldVal(fields.email, isValidEmail);
-    valid &= fieldVal(fields.phoneNumber, isNumber);
-    valid &= fieldVal(fields.roi, isNotEmpty);
-    valid &= fieldVal(fields.addInfo, isNotEmpty)    ;
+    valid &= validateField(fields.customerName, isNotEmpty);
+    console.log(`is customer valid: ${valid}`);
     
+    valid &= validateField(fields.email, isValidEmail);
+    console.log(`is email valid: ${valid}`);
+    
+    valid &= validateField(fields.phoneNumber, isNumber);
+    console.log(`is phone number valid: ${valid}`);
+    
+    valid &= validateField(fields.roi, isNotEmpty);
+    console.log(`is roi valid: ${valid}`);
+    
+    valid &= validateField(fields.addInfo, isNotEmpty);
     console.log("valid "+valid);
     
     return valid; 
@@ -116,14 +118,13 @@ function validCustomer(){
 class Customer{
     
     constructor (customerName, email, phoneNumber, roi, addInfo, previousVisit){
-            
             this.customerName = customerName;
             this.email = email;
             this.phoneNumber = phoneNumber;
             this.roi = roi; 
             this.addInfo = addInfo; 
             this.prevVisit = previousVisit;
-        /*    this.sunday = sunday;
+        /*  this.sunday = sunday;
             this.monday = monday;
             this.tuesday = tuesday;
             this.wednesday = wednesday;
@@ -137,16 +138,14 @@ function contactUs(){
     
     fields.prevVisit = previousVisit(); 
     
-    if ( validCustomer()){
-        var cust = new Customer(customerName.value, email.value, phoneNumber.value, roi.value, addinfo.value, 
+    if ( isValidCustomer()){
+        var cust = new Customer(fields.customerName, fields.email, fields.phoneNumber, fields.roi, fields.addInfo, 
             previousVisit.checked);
-             
-            alert ('Thanks for reaching out!')
-        } else {
-            alert('Information Missing! Please Try Again.')
-        }
+
+        alert ('Thanks for reaching out!')
+    } else {
+        alert('Information Missing! Please Try Again.')
+    }
         
-                  console.log(cust)  
+    console.log("cust =" + cust ); 
 }
-
-
