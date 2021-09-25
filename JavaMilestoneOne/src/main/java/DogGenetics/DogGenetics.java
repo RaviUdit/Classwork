@@ -23,8 +23,8 @@ public class DogGenetics {
         
         // Getting the Dog's name.
         System.out.println("What is the name of your dog?");
-        dogName = dogNameInput.next();
-        dogNameInput.nextLine();
+        dogName = dogNameInput.nextLine();
+      //  dogNameInput.nextLine();
         
         DetermineBreed(dogName);
 
@@ -38,8 +38,36 @@ public class DogGenetics {
     public static void DetermineBreed(String name){
  
         // Declaring Breed Array
-        String[] breeds = {"Labrador Retriever", "Bulldog", "Golden Retriever", "German Shepard", "Beagle", "Poodle", 
-                            "Rottweiler", "Short Haired English Pointer", "Daschund", "Corgi", "Terrier", "Boxer"};
+        String[][] breeds = {{"Labrador Retriever", "Bulldog", "Golden Retriever", "German Shepard", "Beagle", "Poodle"}, 
+                             {"Rottweiler", "Short Haired English Pointer", "Daschund", "Corgi", "Terrier", "Boxer"},
+                             {"Great Dane", "Siberian Husky", "Shih Tzu", "Doberman", "Havanese", "Cane Corso"},
+                             {"Spaniel", "Pug", "Border Collie", "Basset Hound", "Weimaraners", "Brittany"},
+                             {"Shiba Inu", "Bloodhound", "Akita", "Bull Mastiff", "Tibetan Mastiff", "Samoyed"}};
+        
+        // Declaring variables used to determine Breed Percentages        
+        int[] breedPercentages = {0, 0, 0, 0, 0};
+        int totalPercentage = 0;
+        
+        Random percentages = new Random();
+        Random breedDeterminer = new Random();
+        
+        // Determining percentages with for loop. 
+        for (int i = 0; i < 4; i++){
+            breedPercentages[i] = percentages.nextInt(98-totalPercentage) + 1;
+            
+            totalPercentage = totalPercentage + breedPercentages[i];
+        }
+        
+        breedPercentages[4] = 100 - totalPercentage;
+        
+        // Printing Result
+        System.out.println("Well then, I have this highly reliable report on " + name + "'s prestigious background right here.");
+        
+        for (int i = 0; i <= 4; i++){
+            System.out.println( breedPercentages[i] + " " + breeds[i][breedDeterminer.nextInt(5)]);
+        }
+        
+        System.out.println("How Marvelous!");
         
     }
     
