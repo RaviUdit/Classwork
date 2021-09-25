@@ -64,7 +64,7 @@ public class DogGenetics {
         System.out.println("Well then, I have this highly reliable report on " + name + "'s prestigious background right here.");
         
         for (int i = 0; i <= 4; i++){
-            System.out.println( breedPercentages[i] + " " + breeds[i][breedDeterminer.nextInt(5)]);
+            System.out.println( breedPercentages[i] + "% " + breeds[i][breedDeterminer.nextInt(5)]);
         }
         
         System.out.println("How Marvelous!");
