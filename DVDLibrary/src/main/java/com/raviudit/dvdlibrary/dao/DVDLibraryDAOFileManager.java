@@ -58,8 +58,9 @@ public class DVDLibraryDAOFileManager implements DVDLibraryDAO{
     }
 
     @Override
-    public DVD editDVD(String title) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void editDVD(String title) throws DVDLibraryDAOException{
+        loadLibrary();
+        
     }
     
     private DVD unmarshallDVD(String dvdFromFile){

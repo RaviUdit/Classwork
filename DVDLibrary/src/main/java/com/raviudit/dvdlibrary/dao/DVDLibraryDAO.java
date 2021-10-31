@@ -22,6 +22,6 @@ public interface DVDLibraryDAO {
     
     DVD deleteDVD(String title) throws DVDLibraryDAOException;
     
-    DVD editDVD(String title);
+    void editDVD(String title) throws DVDLibraryDAOException;
     
 }

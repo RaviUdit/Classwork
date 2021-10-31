@@ -30,7 +30,7 @@ public class DVDLibraryController {
     
     
     // REMOVE WHEN EDIT FUNCTION IS DONE
-    private UserIO io = new UserIOManager(); 
+    //private UserIO io = new UserIOManager(); 
     
     
     public void run(){
@@ -57,7 +57,7 @@ public class DVDLibraryController {
                         displayDVD();
                         break;
                     case 5:
-                        io.print("EDIT DVD");
+                        editDVD();
                         break;
                     case 6:
                         menuOpen = false; 
@@ -103,6 +103,15 @@ public class DVDLibraryController {
         String title = view.getDVDTitle();
         DVD removedDVD = dao.deleteDVD(title);
         view.displayRemovedDVD(removedDVD);
+    }
+    
+    private void editDVD() throws DVDLibraryDAOException{
+        
+        view.createEditDVDBanner();
+        String title = view.getDVDTitle();
+        DVD editedDVD = dao.getDVD(title);
+        view.editDVD(editedDVD);
+        dao.addDVD(editedDVD.getTitle() , editedDVD);
     }
     
     private void unknownCommand(){

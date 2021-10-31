@@ -68,6 +68,10 @@ public class DVDLibraryView {
         io.print(errorMessage);
     }
     
+    public void createEditDVDBanner(){
+        io.print("==-- Edit DVD --==");
+    }
+    
     //Library Functions
     
     
@@ -75,7 +79,7 @@ public class DVDLibraryView {
     public DVD getNewDVDInfo(){
         String title = io.readString("Please Enter DVD's Title.");
         String releaseDate = io.readString("Please Enter DVD's Release Date [ month / year ].");
-        String rating = io.readString("Please Enter DVD's Rating.");
+        String rating = io.readString("Please Enter DVD's MPAA Rating.");
         String director = io.readString("Please Enter DVD's director.");
         String studio = io.readString("Please Enter DVD's studio.");
         String comments = io.readString("Please Enter Any User Comments.");
@@ -134,6 +138,55 @@ public class DVDLibraryView {
         }
         
         io.readString("Press ENTER to continue.");
+    }
+    
+    // Editing a DVD
+    public void editDVD(DVD dvd){
+        
+        // before calling this function, call getDVDTitle();
+        String tempReleaseDate = dvd.getReleaseDate();
+        String tempStudio = dvd.getStudio();
+        String tempComments = dvd.getUserComments();
+       
+        boolean editMenuOpen = true;
+        while(editMenuOpen){
+         
+        io.print("What property of " + dvd.getTitle() + " would you like to edit?");
+        io.print("1. MPAA Rating");
+        io.print("2. Director");
+        io.print("3. Release Date");
+        io.print("4. Studio");
+        io.print("5. User Comments");
+        io.print("6. Stop Editing");
+        
+        int userChoice = io.readInt("Please select from the preceding options", 1, 6);
+            
+            switch(userChoice){
+                case 1:
+                    dvd.setRating(io.readString("Please enter MPAA new rating."));
+                    break;
+                case 2:
+                    dvd.setDirector(io.readString("Please enter new Director."));
+                    break;
+                case 3: 
+                    dvd.setReleaseDate(io.readString("Please enter new Release Date."));
+                    break;
+                case 4:
+                    dvd.setStudio(io.readString("Please enter new Studio."));
+                    break;
+                case 5:
+                    dvd.setUserComments(io.readString("Please Enter User Comments."));
+                    break;
+                case 6:
+                    editMenuOpen = false; 
+                    break;
+                default:
+                    createUnknownCommandBanner();
+            }
+        }
+        
+        io.print("Dvd Editing Completed.");
+        
     }
     
 }
