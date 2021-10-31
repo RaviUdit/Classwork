@@ -91,7 +91,7 @@ public class RockPaperScissors {
                 playGame = userPlay.next();
                 userPlay.nextLine();
             }
-        } while (playGame.equals("y") || playGame.equals("Y") || playGame.equals("yes") || playGame.equals("Yes") ||  playGame.equals("YES"));
+        } while (playGame.equalsIgnoreCase("y") || playGame.equalsIgnoreCase("yes") );
         
         System.out.println("Thank you for playing Rock-Paper-Scissors! Hope to see you again!");
          
