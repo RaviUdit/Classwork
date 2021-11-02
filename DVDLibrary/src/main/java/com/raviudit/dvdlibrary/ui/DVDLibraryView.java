@@ -20,6 +20,11 @@ public class DVDLibraryView {
         this.io = io;
     }
     
+    /*
+    ** Function Name: libraryMenu()
+    ** Return Type: int
+    ** Purpose: Displays the main menu of the program. 
+    */
     public int libraryMenu(){
         
         io.print("Ravi's DVD Library. Please make your Selection");
@@ -33,7 +38,7 @@ public class DVDLibraryView {
         return io.readInt("Please select from the Listed Options", 1, 6);
     }
     
-    //Banners
+    //Banners: used to help distinguish different parts of the program. 
     
     public void createDVDBanner(){
         io.print("==-- Enter DVD Information -- ==");        
@@ -74,8 +79,12 @@ public class DVDLibraryView {
     
     //Library Functions
     
-    
-    //Creating a DVD
+    /*
+    ** Function Name: getNewDVDInfo()
+    ** Return Type: DVD
+    ** Purpose: Gets necessary DVD information from user and stores it as a new 
+    **          DVD object.
+    */
     public DVD getNewDVDInfo(){
         String title = io.readString("Please Enter DVD's Title.");
         String releaseDate = io.readString("Please Enter DVD's Release Date [ month / year ].");
@@ -95,7 +104,13 @@ public class DVDLibraryView {
         return currentDVD;
     }
     
-    //Displaying DVDs
+    /*
+    ** Function Name: displayDVDList()
+    ** Return Type: void
+    ** Paramemters: dvdList
+    ** Purpose: Displays the Title, Release Date, and Director off all DVDs in 
+    **          the library. 
+    */    
     public void displayDVDList(List<DVD> dvdList){
         for (DVD currentDVD : dvdList){
             String dvdInfo = String.format("#%s : %s %s", 
@@ -108,11 +123,22 @@ public class DVDLibraryView {
         io.readString("Hit Enter to Continue");
     }
     
-    //Searching for DVD
+    /*
+    ** Function Name: getDVDTitle()
+    ** Return Type: String
+    ** Purpose: Gets and returns the title of a DVD from user input.
+    */
     public String getDVDTitle(){
         return io.readString("Please Enter the Title of the DVD.");
     }
     
+    /*
+    ** Function Name: displayDVD()
+    ** Return Type: void
+    ** Parameters: dvd
+    ** Purpose: Takes a DVD objects and displays all related data for that DVD 
+    **          that is stored in the library. 
+    */
     public void displayDVD(DVD dvd){
         if (dvd != null){
             io.print(dvd.getTitle());
@@ -129,7 +155,13 @@ public class DVDLibraryView {
         io.readString("Press ENTER to continue.");
     }
     
-    //Removing DVD
+    /*
+    ** Function Name: displayRemovedDVD()
+    ** Return Type: void
+    ** Parameters: title
+    ** Purpose: Informs user that the DVD specified by title has been removed 
+    **          from the library.
+    */
     public void displayRemovedDVD(DVD title){
         if (title != null){
             io.print("DVD Removed from Library.");
@@ -140,52 +172,52 @@ public class DVDLibraryView {
         io.readString("Press ENTER to continue.");
     }
     
-    // Editing a DVD
+    /*
+    ** Function Name: editDVD()
+    ** Return Type: void
+    ** Parameters: dvd
+    ** Purpose: Performs a loop that allows a user to edit multiple entries of a DVD. 
+    */
     public void editDVD(DVD dvd){
-        
-        // before calling this function, call getDVDTitle();
-        String tempReleaseDate = dvd.getReleaseDate();
-        String tempStudio = dvd.getStudio();
-        String tempComments = dvd.getUserComments();
-       
+       //RUN getDVD BEFORE THIS
         boolean editMenuOpen = true;
         while(editMenuOpen){
          
-        io.print("What property of " + dvd.getTitle() + " would you like to edit?");
-        io.print("1. MPAA Rating");
-        io.print("2. Director");
-        io.print("3. Release Date");
-        io.print("4. Studio");
-        io.print("5. User Comments");
-        io.print("6. Stop Editing");
-        
-        int userChoice = io.readInt("Please select from the preceding options", 1, 6);
-            
-            switch(userChoice){
-                case 1:
-                    dvd.setRating(io.readString("Please enter MPAA new rating."));
-                    break;
-                case 2:
-                    dvd.setDirector(io.readString("Please enter new Director."));
-                    break;
-                case 3: 
-                    dvd.setReleaseDate(io.readString("Please enter new Release Date."));
-                    break;
-                case 4:
-                    dvd.setStudio(io.readString("Please enter new Studio."));
-                    break;
-                case 5:
-                    dvd.setUserComments(io.readString("Please Enter User Comments."));
-                    break;
-                case 6:
-                    editMenuOpen = false; 
-                    break;
-                default:
-                    createUnknownCommandBanner();
+            io.print("What property of " + dvd.getTitle() + " would you like to edit?");
+            io.print("1. MPAA Rating");
+            io.print("2. Director");
+            io.print("3. Release Date");
+            io.print("4. Studio");
+            io.print("5. User Comments");
+            io.print("6. Stop Editing");
+
+            int userChoice = io.readInt("Please select from the preceding options", 1, 6);
+
+                switch(userChoice){
+                    case 1:
+                        dvd.setRating(io.readString("Please enter MPAA new rating."));
+                        break;
+                    case 2:
+                        dvd.setDirector(io.readString("Please enter new Director."));
+                        break;
+                    case 3: 
+                        dvd.setReleaseDate(io.readString("Please enter new Release Date."));
+                        break;
+                    case 4:
+                        dvd.setStudio(io.readString("Please enter new Studio."));
+                        break;
+                    case 5:
+                        dvd.setUserComments(io.readString("Please Enter User Comments."));
+                        break;
+                    case 6:
+                        editMenuOpen = false; 
+                        break;
+                    default:
+                        createUnknownCommandBanner();
+                }
             }
-        }
         
-        io.print("Dvd Editing Completed.");
+        io.print("DVD Editing Completed.");
         
     }
     

@@ -11,6 +11,11 @@ package com.raviudit.dvdlibrary.dao;
  */
 public class DVDLibraryDAOException extends Exception {
     
+    /*
+    ** Function Name: DVDLibraryDAOException
+    ** Purpose: Gives error code if users are able to step out of program 
+    ** parameters.  
+    */
     public DVDLibraryDAOException(String message){
         super(message);
     }

@@ -7,11 +7,8 @@ package com.raviudit.dvdlibrary.controller;
 
 import com.raviudit.dvdlibrary.dao.DVDLibraryDAO;
 import com.raviudit.dvdlibrary.dao.DVDLibraryDAOException;
-import com.raviudit.dvdlibrary.dao.DVDLibraryDAOFileManager;
 import com.raviudit.dvdlibrary.dto.DVD;
 import com.raviudit.dvdlibrary.ui.DVDLibraryView;
-import com.raviudit.dvdlibrary.ui.UserIO;
-import com.raviudit.dvdlibrary.ui.UserIOManager;
 import java.util.List;
 
 /**
@@ -20,19 +17,23 @@ import java.util.List;
  */
 public class DVDLibraryController {
     
+    //declaring and assigning class instances. 
     private DVDLibraryView view;
     private DVDLibraryDAO dao;
     
     public DVDLibraryController(DVDLibraryDAO dao, DVDLibraryView view){
         this.dao = dao;
         this.view = view;
-    }
-    
-    
+    }   
     // REMOVE WHEN EDIT FUNCTION IS DONE
     //private UserIO io = new UserIOManager(); 
     
     
+    /*
+    ** Function Name: run
+    ** Return Type: void
+    ** Purpose: Serves as primary program interface.
+    */
     public void run(){
         
         boolean menuOpen = true; 
@@ -60,6 +61,7 @@ public class DVDLibraryController {
                         editDVD();
                         break;
                     case 6:
+                        // Ends main loop. 
                         menuOpen = false; 
                         break;
                     default:
@@ -73,10 +75,21 @@ public class DVDLibraryController {
         }
     }
     
+    /*
+    ** Function Name: getMenuSelection
+    ** Return Type: void
+    ** Purpose: calls libraryMenu() from DVDLibraryView
+    */
     private int getMenuSelection(){
         return view.libraryMenu();
     }
     
+    /*
+    ** Function Name: createDVD
+    ** Return Type: void
+    ** Purpose: Creates a new DVD object with getNewDVDInfo() and stores
+    **          the DVD object in an external file with addDVD(). 
+    */
     private void createDVD () throws DVDLibraryDAOException{
         
         view.createDVDBanner();
@@ -85,12 +98,24 @@ public class DVDLibraryController {
         view.createDVDCreatedBanner();
     }
     
+    /*
+    ** Function Name: listDVDs
+    ** Return Type: void
+    ** Purpose: Loads a List with DVD objects with getAllDVDs() and displays 
+    **          the list in the console with displayDVDList(). 
+    */
     private void listDVDs() throws DVDLibraryDAOException{
         view.createDisplayAllDVDsBanner();
         List<DVD> dvdList = dao.getAllDVDs();
         view.displayDVDList(dvdList);
     }
     
+    /*
+    ** Function Name: displayDVD
+    ** Return Type: void
+    ** Purpose: Captures the name of a DVD from user input with getDVDTitle()
+    **          and displays all information about that dvd with displayDVD().
+    */
     private void displayDVD() throws DVDLibraryDAOException{
         view.createSearchForDVDBanner();
         String dvdTitle = view.getDVDTitle();
@@ -98,6 +123,12 @@ public class DVDLibraryController {
         view.displayDVD(dvd);
     }
     
+    /*
+    ** Function Name: removeDVD
+    ** Return Type: void
+    ** Purpose: Catches the name of a DVD from user input with getDVDTitle()
+    **          and then removes that DVD from the library with deleteDVD(). 
+    */
     private void removeDVD() throws DVDLibraryDAOException{
         view.createRemoveDVDBanner();
         String title = view.getDVDTitle();
@@ -105,6 +136,14 @@ public class DVDLibraryController {
         view.displayRemovedDVD(removedDVD);
     }
     
+    /*
+    ** Function Name: editDVD
+    ** Return Type: void
+    ** Purpose: Catches the name of a DVD from user input with getDVDTitle()
+    **          and then allows the user to edit the remaining properties of 
+    **          the specified DVD object with editDVD(). The new data then 
+    **          overwrites the previous dvd data by calling addDVD().
+    */
     private void editDVD() throws DVDLibraryDAOException{
         
         view.createEditDVDBanner();

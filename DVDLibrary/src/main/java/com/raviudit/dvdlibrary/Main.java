@@ -18,6 +18,15 @@ import com.raviudit.dvdlibrary.ui.UserIOManager;
  */
 public class Main {
     
+    
+    /*
+    ** Function Name: main
+    ** Return Type: Void
+    ** Purpose: Creates an instance of the classes necessary to run the program 
+    **          and feeds them into the approppriate method in order to run the
+    **          program. 
+    */
+    
     public static void main(String[] args) {
         UserIO myIo = new UserIOManager();
         DVDLibraryView myView = new DVDLibraryView(myIo);

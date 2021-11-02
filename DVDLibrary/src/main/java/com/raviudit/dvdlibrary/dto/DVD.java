@@ -9,14 +9,19 @@ package com.raviudit.dvdlibrary.dto;
  *
  * @author raviu
  */
+
+    /*
+    ** Class Name: DVD
+    ** Properties: title, releaseDate, rating, director, studio, userComments
+    */
 public class DVD {
     
-    private String title; 
-    private String releaseDate;
-    private String rating; 
-    private String director; 
-    private String studio; 
-    private String userComments; 
+    private String title;           //DVD TItle
+    private String releaseDate;     //DVD Release Date
+    private String rating;          //MPAA Rating 
+    private String director;        //Director
+    private String studio;          //Studio the produced the DVD
+    private String userComments;    //Additional User Comments. 
     
     public DVD(String title){
         this.title = title;
