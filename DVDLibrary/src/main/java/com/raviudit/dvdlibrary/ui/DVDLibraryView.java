@@ -65,7 +65,7 @@ public class DVDLibraryView {
     }
     
     public void createExitBanner(){
-        io.print("==-- Goodbye. THank you for using Ravi's DVD Library. --==");
+        io.print("==-- Goodbye. Thank you for using Ravi's DVD Library. --==");
     }
     
     public void createErrorMessageBanner(String errorMessage){
@@ -113,7 +113,7 @@ public class DVDLibraryView {
     */    
     public void displayDVDList(List<DVD> dvdList){
         for (DVD currentDVD : dvdList){
-            String dvdInfo = String.format("#%s : %s %s", 
+            String dvdInfo = String.format("%s : %s %s", 
                     currentDVD.getTitle(),
                     currentDVD.getReleaseDate(),
                     currentDVD.getDirector());

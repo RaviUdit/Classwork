@@ -13,10 +13,10 @@ import java.util.List;
  * @author raviu
  */
 
-    /*
-    ** Function Name: DVDLibraryDAO
-    ** Type: interface
-    */
+ /*
+** Name: DVDLibraryDAO
+** Type: interface
+*/
 public interface DVDLibraryDAO {
     
     DVD addDVD(String title, DVD dvd) throws DVDLibraryDAOException;

@@ -9,9 +9,16 @@ package com.raviudit.dvdlibrary.ui;
  *
  * @author raviu
  */
+
+ /*
+** Name: UserIO
+** Type: interface
+*/
 public interface UserIO {
     
     void print (String msg);
+    
+    String readString(String prompt);
     
     double readDouble(String promtp);
     
@@ -28,8 +35,5 @@ public interface UserIO {
     long readLong(String prompt);
 
     long readLong(String prompt, long min, long max);
-
-    String readString(String prompt);
-    
-    
+ 
 }
