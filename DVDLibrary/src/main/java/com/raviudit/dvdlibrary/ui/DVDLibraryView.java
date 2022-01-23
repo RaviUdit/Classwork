@@ -141,12 +141,12 @@ public class DVDLibraryView {
     */
     public void displayDVD(DVD dvd){
         if (dvd != null){
-            io.print(dvd.getTitle());
-            io.print(dvd.getRating());
-            io.print(dvd.getDirector());
-            io.print(dvd.getReleaseDate());
-            io.print(dvd.getStudio());
-            io.print(dvd.getUserComments());
+            io.print("Title: " + dvd.getTitle());
+            io.print("Rating: " + dvd.getRating());
+            io.print("Director: " + dvd.getDirector());
+            io.print("Release Date: " + dvd.getReleaseDate());
+            io.print("Studio: " + dvd.getStudio());
+            io.print("User Comments: " + dvd.getUserComments());
             io.print(" ");
         } else {
             io.print("DVD not Found.");
