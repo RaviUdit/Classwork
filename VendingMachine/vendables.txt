@@ -1,8 +1,8 @@
-Dasani:&:1.00:&:20:&:14
+Dasani:&:1.00:&:20:&:13
 AHA Peach:&:1.00:&:20:&:0
 AHA Strawberry:&:1.00:&:20:&:0
 Diet Coca Cola:&:1.00:&:20:&:20
 Diet Sprite:&:1.00:&:20:&:19
-Sprite:&:1.00:&:20:&:18
+Sprite:&:1.00:&:20:&:16
 Coca Cola:&:1.00:&:20:&:18
 Barqs Root Beet:&:1.00:&:20:&:20

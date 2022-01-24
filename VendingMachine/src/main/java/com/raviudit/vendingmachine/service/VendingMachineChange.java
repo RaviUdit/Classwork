@@ -31,28 +31,28 @@ public class VendingMachineChange {
                                    
         switch (coin){
             case QUARTER:
-                coinsReturned = remainingMoney.divide(quarter, 2, RoundingMode.HALF_UP);
+                coinsReturned = remainingMoney.divide(quarter, 0, RoundingMode.DOWN);
                 System.out.println("You receive back " + coinsReturned.toString() + " quarters");
                 
                 change = remainingMoney.subtract(coinsReturned.multiply(quarter));
                 return change;
                 
             case DIME:
-                coinsReturned = remainingMoney.divide(dime, 2, RoundingMode.HALF_UP);
+                coinsReturned = remainingMoney.divide(dime, 0, RoundingMode.DOWN);
                 System.out.println("You receive back " + coinsReturned.toString() + " dimes");
                 
                 change = remainingMoney.subtract(coinsReturned.multiply(dime));
                 return change;
                 
             case NICKEL:
-                coinsReturned = remainingMoney.divide(nickel, 2, RoundingMode.HALF_UP);
+                coinsReturned = remainingMoney.divide(nickel, 0, RoundingMode.DOWN);
                 System.out.println("You receive back " + coinsReturned.toString() + " nickels");
                 
                 change = remainingMoney.subtract(coinsReturned.multiply(nickel));
                 return change;
                 
             case PENNY:
-                coinsReturned = remainingMoney.divide(penny, 2, RoundingMode.HALF_UP);
+                coinsReturned = remainingMoney.divide(penny, 0, RoundingMode.DOWN);
                 System.out.println("You receive back " + coinsReturned.toString() + " pennies");
                 
                 return change;
