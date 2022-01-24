@@ -25,4 +25,6 @@ public interface VendingMachineServiceLayer {
     void vendVendable(Vendable vendable, String cash) throws VendingMachineInsufficientFundsException, VendingMachineItemNotInStockException, VendingMachineDAOException;
     
     void makingChange(BigDecimal remainingMoney);
+    
+    public void isThatMoney(String maybeMoney) throws VendingMachineIsNotMoneyException;
 }

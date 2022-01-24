@@ -75,6 +75,11 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         remainingChange = zero;        
     }
     
+    @Override
+    public void isThatMoney(String maybeMoney) throws VendingMachineIsNotMoneyException {
+        checkIfMoney(maybeMoney);
+    }
+    
     //helper function to check if item is in stock. 
     
     private void checkIfInStock(Vendable vendable) throws VendingMachineItemNotInStockException{
@@ -99,24 +104,41 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         }
     }
     
-    private void checkIfMoney(String maybeMoney){
+    private void checkIfMoney(String maybeMoney) throws VendingMachineIsNotMoneyException{
+        
+        boolean isMoney = true;
+        
+        if (maybeMoney.startsWith("0") || maybeMoney.startsWith("1") || maybeMoney.startsWith("2") || maybeMoney.startsWith("3") || maybeMoney.startsWith("4") ||
+            maybeMoney.startsWith("5") || maybeMoney.startsWith("6") || maybeMoney.startsWith("7") || maybeMoney.startsWith("8") || maybeMoney.startsWith("9") ||
+            maybeMoney.startsWith(".")){
+            isMoney = true;
+        } else {
+            isMoney = false;
+        }
+        
+        if (isMoney != true){
+            throw new VendingMachineIsNotMoneyException("That's not real money!");
+        }
         
         //check if the string if a dollar amount, then pass through to purchase item.
+        BigDecimal queryMoney = new BigDecimal(maybeMoney);
+        if (queryMoney.scale() > 2){
+            throw new VendingMachineIsNotMoneyException("That's not real money!");
+        }
         
     }
     
     private void checkifVendableExists(String maybeVendable) throws VendingMachineDAOException, 
                                                                     VendingMachineItemDoesNotExistException{
         
-        //Vendable queryVendable = dao.getVendable(maybeVendable);
-        //List<Vendable> checkVendable = dao.getAllVendables();
+        //Create list of item names and check against it if the item exists. 
         List<String> queryList = dao.getAllVendables().stream().map((p)->p.getItemName()).collect(Collectors.toList());
         boolean containsVendable = queryList.contains(maybeVendable);
         //check if the string is actually the name of an item that exists, then pass it through. 
         
        // containsVendable = true;
-        
-        if (containsVendable != true){
+       
+       if (containsVendable != true){
             throw new VendingMachineItemDoesNotExistException(maybeVendable + " is not available from this machine.");
         }
     }

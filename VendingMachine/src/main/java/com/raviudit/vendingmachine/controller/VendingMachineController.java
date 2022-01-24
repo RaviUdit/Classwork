@@ -8,6 +8,7 @@ package com.raviudit.vendingmachine.controller;
 import com.raviudit.vendingmachine.dao.VendingMachineDAOException;
 import com.raviudit.vendingmachine.dto.Vendable;
 import com.raviudit.vendingmachine.service.VendingMachineInsufficientFundsException;
+import com.raviudit.vendingmachine.service.VendingMachineIsNotMoneyException;
 import com.raviudit.vendingmachine.service.VendingMachineItemDoesNotExistException;
 import com.raviudit.vendingmachine.service.VendingMachineItemNotInStockException;
 import com.raviudit.vendingmachine.service.VendingMachineServiceLayer;
@@ -52,7 +53,7 @@ public class VendingMachineController {
                         unknownCommand();
                 }
             }
-        } catch (VendingMachineDAOException | VendingMachineItemDoesNotExistException e){
+        } catch (VendingMachineDAOException | VendingMachineItemDoesNotExistException | VendingMachineIsNotMoneyException e){
             
             view.createErrorMessageBanner(e.getMessage());
         }
@@ -74,12 +75,12 @@ public class VendingMachineController {
         view.createDivisionBanner();
     }
     
-    private void vendVendable() throws VendingMachineDAOException, VendingMachineItemDoesNotExistException{
+    private void vendVendable() throws VendingMachineDAOException, VendingMachineItemDoesNotExistException, VendingMachineIsNotMoneyException{
         
         view.createDivisionBanner();
         
         String userCash = view.getUserCash(); //NEED TO WRITE FUNCTION TO CHECK IF STRING IF A NUMBER.
-        
+        service.isThatMoney(userCash);
         String vendableName = view.getVendableName(); //NEED TO WRITE FUNCTION TO MAKE SURE ITEM EXISTS.
         Vendable vendedVendable = service.getVendable(vendableName);
         
@@ -105,6 +106,8 @@ public class VendingMachineController {
                 view.createErrorMessageBanner(e.getMessage());
                 
                 String additionalCash = view.getUserCash();
+                service.isThatMoney(additionalCash);
+                
                 BigDecimal newCash = new BigDecimal(additionalCash);
                 BigDecimal oldCash = new BigDecimal(userCash);
                 userCash = newCash.add(oldCash).toString();
