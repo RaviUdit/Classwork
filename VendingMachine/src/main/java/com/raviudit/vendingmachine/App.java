@@ -25,13 +25,25 @@ public class App {
     
     public static void main(String[] args) {
         
+        //User Input/Output
         UserIO myIO = new UserIOConsoleImpl();
+        
+        //View
         VendingMachineView myView = new VendingMachineView(myIO);
+        
+        //DAO
         VendingMachineDAO myDAO = new VendingMachineDAOFileImpl();
+        
+        //Audit DAO
         VendingMachineAuditDAO myAuditDao = new VendingMachineAuditDAOFileImpl();
+        
+        //Change
         VendingMachineChange myChange = new VendingMachineChange();
+        
+        //Service Layer
         VendingMachineServiceLayer myService = new VendingMachineServiceLayerImpl(myDAO, myAuditDao, myChange);
         
+        //Controller
         VendingMachineController controller = new VendingMachineController(myView, myService);
         controller.run();
         

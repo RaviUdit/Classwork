@@ -20,7 +20,7 @@ public interface VendingMachineServiceLayer {
     
     List<Vendable> getAllVendables() throws VendingMachineDAOException;
     
-    Vendable getVendable(String vendableName) throws VendingMachineDAOException;
+    Vendable getVendable(String vendableName) throws VendingMachineDAOException, VendingMachineItemDoesNotExistException;
     
     void vendVendable(Vendable vendable, String cash) throws VendingMachineInsufficientFundsException, VendingMachineItemNotInStockException, VendingMachineDAOException;
     

@@ -8,6 +8,7 @@ package com.raviudit.vendingmachine.controller;
 import com.raviudit.vendingmachine.dao.VendingMachineDAOException;
 import com.raviudit.vendingmachine.dto.Vendable;
 import com.raviudit.vendingmachine.service.VendingMachineInsufficientFundsException;
+import com.raviudit.vendingmachine.service.VendingMachineItemDoesNotExistException;
 import com.raviudit.vendingmachine.service.VendingMachineItemNotInStockException;
 import com.raviudit.vendingmachine.service.VendingMachineServiceLayer;
 import com.raviudit.vendingmachine.ui.VendingMachineView;
@@ -51,7 +52,7 @@ public class VendingMachineController {
                         unknownCommand();
                 }
             }
-        } catch (VendingMachineDAOException e){
+        } catch (VendingMachineDAOException | VendingMachineItemDoesNotExistException e){
             
             view.createErrorMessageBanner(e.getMessage());
         }
@@ -73,13 +74,13 @@ public class VendingMachineController {
         view.createDivisionBanner();
     }
     
-    private void vendVendable() throws VendingMachineDAOException{
+    private void vendVendable() throws VendingMachineDAOException, VendingMachineItemDoesNotExistException{
         
         view.createDivisionBanner();
         
-        String userCash = view.getUserCash();
+        String userCash = view.getUserCash(); //NEED TO WRITE FUNCTION TO CHECK IF STRING IF A NUMBER.
         
-        String vendableName = view.getVendableName();
+        String vendableName = view.getVendableName(); //NEED TO WRITE FUNCTION TO MAKE SURE ITEM EXISTS.
         Vendable vendedVendable = service.getVendable(vendableName);
         
         boolean vendingMachineError = false;

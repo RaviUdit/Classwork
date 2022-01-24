@@ -10,7 +10,9 @@ import com.raviudit.vendingmachine.dao.VendingMachineDAO;
 import com.raviudit.vendingmachine.dao.VendingMachineDAOException;
 import com.raviudit.vendingmachine.dto.Vendable;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -41,7 +43,10 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     }
 
     @Override
-    public Vendable getVendable(String vendableName) throws VendingMachineDAOException {
+    public Vendable getVendable(String vendableName) throws VendingMachineDAOException,
+                                                            VendingMachineItemDoesNotExistException{
+        
+        checkifVendableExists(vendableName);
         return dao.getVendable(vendableName); //Passthrough to method defined in DAO. 
     } 
 
@@ -91,6 +96,28 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
             throw new VendingMachineInsufficientFundsException("You have not entered enough money to purchase " + vendable.getItemName() + "Your current funds are: $" + cash);
             
             
+        }
+    }
+    
+    private void checkIfMoney(String maybeMoney){
+        
+        //check if the string if a dollar amount, then pass through to purchase item.
+        
+    }
+    
+    private void checkifVendableExists(String maybeVendable) throws VendingMachineDAOException, 
+                                                                    VendingMachineItemDoesNotExistException{
+        
+        //Vendable queryVendable = dao.getVendable(maybeVendable);
+        //List<Vendable> checkVendable = dao.getAllVendables();
+        List<String> queryList = dao.getAllVendables().stream().map((p)->p.getItemName()).collect(Collectors.toList());
+        boolean containsVendable = queryList.contains(maybeVendable);
+        //check if the string is actually the name of an item that exists, then pass it through. 
+        
+       // containsVendable = true;
+        
+        if (containsVendable != true){
+            throw new VendingMachineItemDoesNotExistException(maybeVendable + " is not available from this machine.");
         }
     }
    
