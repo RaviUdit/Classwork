@@ -28,10 +28,21 @@ public class VendingMachineDAOFileImpl implements VendingMachineDAO{
     private Map<String, Vendable> vendables = new HashMap<>();
     
     //File Code 
-    public static final String STOCK_LOCATION = "vendables.txt";
+    private final String STOCK_LOCATION;
     public static final String DELIMITER = ":&:";
+       
+    public VendingMachineDAOFileImpl(){
+        STOCK_LOCATION = "vendables.txt";
+    }
     
+    //Used for instances of VendingMachineDAOFileImpl instanced with other files.
+    public VendingMachineDAOFileImpl(String stockTextFile){
+        STOCK_LOCATION = stockTextFile;
+    }
+
+
     //Overrides
+
     @Override
     public Vendable updateVendables(String vendableName, Vendable vendable) throws VendingMachineDAOException{
         
@@ -68,6 +79,8 @@ public class VendingMachineDAOFileImpl implements VendingMachineDAO{
        vendable.setCurrentStock(newStock);
         
     }
+    
+
     
     //Reading and Writing to File
     private Vendable unmarshallVendables(String vendableFromFile){

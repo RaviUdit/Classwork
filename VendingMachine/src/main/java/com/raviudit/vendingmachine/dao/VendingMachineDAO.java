@@ -21,4 +21,6 @@ public interface VendingMachineDAO {
     Vendable getVendable(String vendableName) throws VendingMachineDAOException;
     
     void vendVendable(Vendable vendable);
+    
+
 }

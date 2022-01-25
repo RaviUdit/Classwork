@@ -5,6 +5,8 @@
  */
 package com.raviudit.vendingmachine.dto;
 
+import java.util.Objects;
+
 /**
  *
  * @author raviu
@@ -12,6 +14,51 @@ package com.raviudit.vendingmachine.dto;
 public class Vendable {
     
     private String itemName; 
+
+    // Testing Code
+    @Override
+    public String toString() {
+        return "Vendable{" + "itemName=" + itemName + ", itemPrice=" + itemPrice + ", currentStock=" + currentStock + ", maxStock=" + maxStock + '}';
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 67 * hash + Objects.hashCode(this.itemName);
+        hash = 67 * hash + Objects.hashCode(this.itemPrice);
+        hash = 67 * hash + this.currentStock;
+        hash = 67 * hash + this.maxStock;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Vendable other = (Vendable) obj;
+        if (this.currentStock != other.currentStock) {
+            return false;
+        }
+        if (this.maxStock != other.maxStock) {
+            return false;
+        }
+        if (!Objects.equals(this.itemName, other.itemName)) {
+            return false;
+        }
+        if (!Objects.equals(this.itemPrice, other.itemPrice)) {
+            return false;
+        }
+        return true;
+    }
+    
+    //Functional Code
     private String itemPrice;
     private int currentStock;
     private int maxStock;
