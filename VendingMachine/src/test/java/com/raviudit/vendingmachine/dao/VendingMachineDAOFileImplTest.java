@@ -121,7 +121,7 @@ public class VendingMachineDAOFileImplTest {
         testDAO.vendVendable(vendable);
         
         // Assert
-        assertEquals(20, vendable.getCurrentStock() + 1, "THere should be 19 Pepsi");
+        assertEquals(20, vendable.getCurrentStock() + 1, "There should be 19 Pepsi");
     }
     
 }
