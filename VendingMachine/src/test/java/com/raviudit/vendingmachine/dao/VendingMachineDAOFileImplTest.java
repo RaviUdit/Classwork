@@ -24,6 +24,11 @@ public class VendingMachineDAOFileImplTest {
     public VendingMachineDAOFileImplTest() {
     }
     
+    /*
+    ** Function Name: setUp
+    ** Return Type: void
+    ** Purpose:  Creates/Blanks out a file defined by testFile to store test results. .
+    */  
     @BeforeEach
     public void setUp() throws Exception{
         
@@ -39,9 +44,16 @@ public class VendingMachineDAOFileImplTest {
     public void tearDown() {
     }
 
+    /*
+    ** Function Name: testUpdateVendablesGetVendable
+    ** Return Type: void
+    ** Purpose:  Tests the DAOs updateVendables and getVendable method.
+    */  
+    //Test for updateVendables and getVendables
     @Test
     public void testUpdateVendablesGetVendable() throws Exception{
         
+        //Arrange
         //Create test inputs
         String itemName = "Pepsi";
         Vendable vendable = new Vendable(itemName);
@@ -49,12 +61,14 @@ public class VendingMachineDAOFileImplTest {
         vendable.setMaxStock(20);
         vendable.setCurrentStock(20);
         
+        //Act
         // Populate DAO with Test inputs
         testDAO.updateVendables(itemName, vendable);
         
         // Get vendable
         Vendable testVendable = testDAO.getVendable(itemName);
         
+        //Assess
         // Perform Tests
         // Check Item Name
         assertEquals(vendable.getItemName(), testVendable.getItemName(), "Checking Item Name.");
@@ -69,6 +83,11 @@ public class VendingMachineDAOFileImplTest {
         
     }
     
+    /*
+    ** Function Name: testUpdateVendableGetAllVendables
+    ** Return Type: void
+    ** Purpose:  Tests the DAOs updateVendables and getAllVendables method.
+    */  
     // Test for getAllVendables
     @Test
     public void testUpdateVendableGetAllVendables() throws Exception{
@@ -102,7 +121,11 @@ public class VendingMachineDAOFileImplTest {
         assertTrue(testDAO.getAllVendables().contains(vendable2), "List should contain 7-Up");
     }
     
-    
+    /*
+    ** Function Name: testUpdateVendablesVendVendable
+    ** Return Type: void
+    ** Purpose:  Tests the DAOs updateVendables and vendVendables method.
+    */  
     // Test for vendVendable
     @Test
     public void testUpdateVendablesVendVendable() throws Exception{

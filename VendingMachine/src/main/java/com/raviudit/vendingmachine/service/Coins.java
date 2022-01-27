@@ -9,6 +9,12 @@ package com.raviudit.vendingmachine.service;
  *
  * @author raviu
  */
+
+/*
+** Name: Coins
+** Type: Enum
+** 
+ */
 public enum Coins {
     
     PENNY, NICKEL, DIME, QUARTER

@@ -30,6 +30,12 @@ public class VendingMachineController {
         this.service = service;
     }
     
+    /*
+    ** Function Name: run
+    ** Return Type: Void
+    ** Purpose: Runs the program. Catches VendingMachineDAOException, VendingMachineItemDoesNotExistException, 
+    **          or VendingMachineIsNotMoneyException if they are triggered in the loop. 
+    */
     public void run(){
         
         boolean menuOpen = true; 
@@ -60,11 +66,22 @@ public class VendingMachineController {
         
     }
     
+    /*
+    ** Function Name: getMenuSelection
+    ** Return Type: int
+    ** Purpose: Calls view to list the menu and collect the user's input.  
+    */
     private int getMenuSelection(){
         
         return view.vendingMachineMenu();
     }
     
+    /*
+    ** Function Name: listVendable
+    ** Return Type: Void
+    ** Purpose: Calls service to get all vendables saved to external file.
+    **          Calls view to list all the loaded vendables. 
+    */
     private void listVendables() throws VendingMachineDAOException{
         
         view.createDivisionBanner(); 
@@ -75,16 +92,51 @@ public class VendingMachineController {
         view.createDivisionBanner();
     }
     
+    /*
+    ** Function Name: vendVendable
+    ** Return Type: Void
+    ** Purpose: Calls view to determine the User's inputted cash and vendable choice. 
+    **          Checks that both variable and viable for the program. If they are not, the program is 
+    **          interrupted and exceptions are thrown. 
+    **          When both variables are valid service is called to dispense the vendable. 
+    **          vendVendable then calls service to return the user's change.
+    */
     private void vendVendable() throws VendingMachineDAOException, VendingMachineItemDoesNotExistException, VendingMachineIsNotMoneyException{
         
+        //declaring variables.
+        boolean vendingMachineError = false;
+        String userCash = "0.00";
+        String vendableName = "placeholderName";
+        Vendable vendedVendable = new Vendable("placeholderVendable");
+       
         view.createDivisionBanner();
         
-        String userCash = view.getUserCash(); //NEED TO WRITE FUNCTION TO CHECK IF STRING IF A NUMBER.
-        service.isThatMoney(userCash);
-        String vendableName = view.getVendableName(); //NEED TO WRITE FUNCTION TO MAKE SURE ITEM EXISTS.
-        Vendable vendedVendable = service.getVendable(vendableName);
+        do{
+           try{ 
+                userCash = view.getUserCash(); 
+                service.isThatMoney(userCash);
+                
+                vendingMachineError = false;
+           } catch (VendingMachineIsNotMoneyException e){
+               vendingMachineError = true;
+               
+               view.createErrorMessageBanner(e.getMessage());
+           }
+        } while (vendingMachineError);
         
-        boolean vendingMachineError = false;
+        do{
+            try{
+                vendableName = view.getVendableName(); 
+                vendedVendable = service.getVendable(vendableName);
+                
+                vendingMachineError = false;
+            } catch (VendingMachineItemDoesNotExistException e){
+                vendingMachineError = true;
+                
+                view.createErrorMessageBanner(e.getMessage());
+            }
+        } while (vendingMachineError);
+        
         
         do{
             try{
@@ -119,6 +171,11 @@ public class VendingMachineController {
          
     }
     
+    /*
+    ** Function Name: main
+    ** Return Type: Void
+    ** Purpose: Calls view to create a banner if default in run loop is triggered.
+    */
     private void unknownCommand(){
         view.createUnknownCommandBanner();
     }

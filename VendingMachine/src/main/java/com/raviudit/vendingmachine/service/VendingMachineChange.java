@@ -14,6 +14,14 @@ import java.math.RoundingMode;
  */
 public class VendingMachineChange {
     
+    /*
+    ** Function Name: makeChange
+    ** Return Type: BigDecimal
+    ** Purpose: Prints an amount of coins and returns an amount of change depending on the values of coin and remainingMoney
+    **          passed into the make change function. After determining the coin type to be calculated and printed with 
+    **          the coin parameter (quarter, dime, nickel, penny), the program divdes remainingMoney by the associated coin, 
+    **          returning the operation's remainder and printing out the number of coins. 
+    */
     public BigDecimal makeChange(Coins coin, BigDecimal remainingMoney){
         
         BigDecimal quarter = new BigDecimal("0.25");

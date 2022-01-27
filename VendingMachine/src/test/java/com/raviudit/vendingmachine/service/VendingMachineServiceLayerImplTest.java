@@ -51,23 +51,11 @@ public class VendingMachineServiceLayerImplTest {
     public void tearDown() {
     }
 
-    @Test
-    public void testUpdateVendables() throws Exception{
-        
-        //Arrange
-        
-        //String itemName = "Pepsi";
-        //Vendable testVendable = new Vendable(itemName);
-        //testVendable.setItemPrice("1.00");
-        //testVendable.setMaxStock(20);
-        //testVendable.setCurrentStock(20);
-        
-        //Act
-        
-        
-        //Assert
-    }
-    
+    /*
+    ** Function Name: testVendVendableValid
+    ** Return Type: void
+    ** Purpose: Tests the service layer's vendVendable with Valid Information.
+    */  
     @Test
     public void testVendVendableValid() throws Exception{
         
@@ -93,6 +81,11 @@ public class VendingMachineServiceLayerImplTest {
         }
     }
     
+    /*
+    ** Function Name: testVendVendableFailMoney
+    ** Return Type: void
+    ** Purpose: Tests the service layer's vendVendable with invalid money amount.
+    */ 
     @Test
     public void testVendVendableFailMoney() throws Exception{
         
@@ -119,6 +112,11 @@ public class VendingMachineServiceLayerImplTest {
         }
     }
     
+    /*
+    ** Function Name: testVendVendableFailNotInStock
+    ** Return Type: void
+    ** Purpose: Tests the service layyer's vendVendable with an invalid stock amount.
+    */ 
     @Test
     public void testVendVendableFailNotInStock() throws Exception{
     
@@ -145,20 +143,52 @@ public class VendingMachineServiceLayerImplTest {
         }
     }
     
+    /*
+    ** Function Name: testGetVendableValid
+    ** Return Type: void
+    ** Purpose: Tests the getVendable method with valid information. 
+    */ 
     // Test getVendable
     @Test
     public void testGetVendableValid() throws Exception{
         
         // Arrange
-        List<String> queryList = service.getAllVendables().stream().map((p)->p.getItemName()).collect(Collectors.toList());
-        
         String testVendableName = "Pepsi";
         
         // Act and Assert
-        assertTrue(queryList.contains(testVendableName), "There is an item named Pepsi in this list.");
+        try{
+            service.getVendable(testVendableName);
+        } catch (VendingMachineItemDoesNotExistException e){
+            fail(" Vendable is valid. No exception should be thrown.");
+        }
+    }
+    
+     /*
+    ** Function Name: testGetVendableFail
+    ** Return Type: void
+    ** Purpose: Tests the getVendable method with invalid information. 
+    */ 
+    // Test getVendable
+    @Test
+    public void testGetVendableFail() throws Exception{
         
+        // Arrange
+        String testVendableName = "7-Up";
+        
+        // Act and Assert
+        try{
+            service.getVendable(testVendableName);
+             fail(" Expected exception was not thrown");
+        } catch (VendingMachineItemDoesNotExistException e){
+           return;
+        }
     }
 
+     /*
+    ** Function Name: testIsThatMoneyValid
+    ** Return Type: void
+    ** Purpose: Tests the isThatMoney method with valid information. 
+    */ 
     // Test isThatMoney
     @Test
     public void testIsThatMoneyValid() throws Exception{
@@ -177,6 +207,11 @@ public class VendingMachineServiceLayerImplTest {
         
     }
     
+     /*
+    ** Function Name: testIsThatMoneyFail
+    ** Return Type: void
+    ** Purpose: Tests the isThatMoney method with invalid information. 
+    */ 
     @Test
     public void testIsThatMoneyFail() throws Exception{
         

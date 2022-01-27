@@ -15,6 +15,12 @@ import java.util.List;
  *
  * @author raviu
  */
+
+/*
+    ** Function Name: VendingMachineDAOStubImpl
+    ** Type: Stub
+    ** Purpose: used for tests in VendingMachineServiceLayerImplTest 
+    */  
 public class VendingMachineDAOStubImpl implements VendingMachineDAO{
     
     public Vendable testVendable;

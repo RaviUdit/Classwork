@@ -12,6 +12,12 @@ import com.raviudit.vendingmachine.dao.VendingMachineDAOException;
  *
  * @author raviu
  */
+
+/*
+    ** Function Name: VendingMachineAuditDAOStubImpl
+    ** Type: Stub
+    ** Purpose: used for tests in VendingMachineServiceLayerImplTest 
+    */  
 public class VendingMachineAuditDAOStubImpl implements VendingMachineAuditDAO{
     
     @Override

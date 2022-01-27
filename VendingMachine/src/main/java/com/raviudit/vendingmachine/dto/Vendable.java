@@ -11,10 +11,19 @@ import java.util.Objects;
  *
  * @author raviu
  */
+
+ /*
+** Name: Vendable
+** Type: DTO
+** Properties: String itemName
+               String itemPrice
+               Int currentStock
+               Int maxStock
+*/
+
 public class Vendable {
     
-    private String itemName; 
-
+    
     // Testing Code
     @Override
     public String toString() {
@@ -59,6 +68,7 @@ public class Vendable {
     }
     
     //Functional Code
+    private String itemName; 
     private String itemPrice;
     private int currentStock;
     private int maxStock;

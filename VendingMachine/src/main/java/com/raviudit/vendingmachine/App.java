@@ -23,6 +23,14 @@ import com.raviudit.vendingmachine.ui.VendingMachineView;
  */
 public class App {
     
+    /*
+    ** Function Name: main
+    ** Return Type: Void
+    ** Purpose: Creates an instance of the classes necessary to run the program 
+    **          and feeds them into the approppriate method in order to run the
+    **          program. 
+    */
+    
     public static void main(String[] args) {
         
         //User Input/Output

@@ -9,6 +9,11 @@ package com.raviudit.vendingmachine.service;
  *
  * @author raviu
  */
+
+/** Function Name: VendingMachineIsNotMoneyException
+  ** Type: Exception
+  ** Purpose: Throws Exception if the funds given isn't actually money. 
+  */
 public class VendingMachineIsNotMoneyException extends Exception {
     
     public VendingMachineIsNotMoneyException(String message){

@@ -9,6 +9,11 @@ package com.raviudit.vendingmachine.service;
  *
  * @author raviu
  */
+ 
+/** Function Name: VendingMachineInsufficientFundsException
+  ** Type: Exception
+  ** Purpose: Throws Exception if the funds given are not enough. 
+  */
 public class VendingMachineInsufficientFundsException extends Exception {
     
     public VendingMachineInsufficientFundsException(String message){

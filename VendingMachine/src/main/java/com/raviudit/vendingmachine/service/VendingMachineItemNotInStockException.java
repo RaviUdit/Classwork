@@ -9,6 +9,12 @@ package com.raviudit.vendingmachine.service;
  *
  * @author raviu
  */
+
+/** Function Name: VendingMachineItemNotInStockException
+  ** Type: Exception
+  ** Purpose: Throws Exception if the the item is not in stock. 
+  */
+
 public class VendingMachineItemNotInStockException extends Exception{
     
     public VendingMachineItemNotInStockException(String message){

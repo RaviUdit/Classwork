@@ -42,7 +42,13 @@ public class VendingMachineDAOFileImpl implements VendingMachineDAO{
 
 
     //Overrides
-
+    
+    /*
+    ** Function Name: updateVendable
+    ** Return Type: Vendable
+    ** Purpose: Writes an entry to a file defined by STOCK_LOCATION updating the fille with the most current
+    **          numbers and status of vendable items.  
+    */
     @Override
     public Vendable updateVendables(String vendableName, Vendable vendable) throws VendingMachineDAOException{
         
@@ -53,6 +59,11 @@ public class VendingMachineDAOFileImpl implements VendingMachineDAO{
         return updatedVendable;
     }
     
+    /*
+    ** Function Name: getAllVendables
+    ** Return Type: List<Vendable>
+    ** Purpose: Returns a list filled with vendable objects.   
+    */
     @Override
     public List<Vendable> getAllVendables() throws VendingMachineDAOException{
         
@@ -60,6 +71,11 @@ public class VendingMachineDAOFileImpl implements VendingMachineDAO{
         return new ArrayList<Vendable>(vendables.values());
     }
     
+    /*
+    ** Function Name: getVendable
+    ** Return Type: Vendable
+    ** Purpose: returns a single vendable object after obtaining the name defined by vendableName  
+    */
     @Override
     public Vendable getVendable(String vendableName) throws VendingMachineDAOException{
         
@@ -67,6 +83,11 @@ public class VendingMachineDAOFileImpl implements VendingMachineDAO{
         return vendables.get(vendableName);
     }
     
+    /*
+    ** Function Name: vendVendable
+    ** Return Type: Void
+    ** Purpose: Sets the vendable stock to current level minus one.
+    */
     @Override
     public void vendVendable(Vendable vendable){
         
@@ -83,6 +104,13 @@ public class VendingMachineDAOFileImpl implements VendingMachineDAO{
 
     
     //Reading and Writing to File
+    
+    /*
+    ** Function Name: unmarshallVendable
+    ** Return Type: Vendable
+    ** Purpose: Reads vendables from the a string in a library defined by STOCK_LOCATION
+    **          and turns it into a Vendable object. 
+    */
     private Vendable unmarshallVendables(String vendableFromFile){
         
         String[] vendableProperties = vendableFromFile.split(DELIMITER);
@@ -97,6 +125,11 @@ public class VendingMachineDAOFileImpl implements VendingMachineDAO{
         return vendableFromLibrary;
     }
     
+    /*
+    ** Function Name: marshallVendables
+    ** Return Type: String
+    ** Purpose: Turns a vendable object into a string. 
+    */
     private String marshallVendables(Vendable vendable){
         
         String vendableFromText  = vendable.getItemName() + DELIMITER;
@@ -107,6 +140,11 @@ public class VendingMachineDAOFileImpl implements VendingMachineDAO{
         return vendableFromText;
     }
     
+    /*
+    ** Function Name: loadFromFile
+    ** Return Type: Void
+    ** Purpose: Loads information from a file defined by STOCK_LOCATION and turns that data into Vendable ocjects
+    */
     private void loadFromFile() throws VendingMachineDAOException{
         
         Scanner scanner;
@@ -130,6 +168,11 @@ public class VendingMachineDAOFileImpl implements VendingMachineDAO{
         scanner.close();
     }
     
+    /*
+    ** Function Name: writeToFile
+    ** Return Type: Void
+    ** Purpose: Write to a file defined by STOCK_LOCATION a series of strings that represent Vendable objects. 
+    */
     private void writeToFile() throws VendingMachineDAOException{
         
         PrintWriter out;

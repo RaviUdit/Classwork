@@ -24,7 +24,11 @@ public class VendingMachineView {
     }
     
     //MENUS
-    
+    /*
+    ** Function Name: vendingMachineMenu
+    ** Return Type: int
+    ** Purpose: Displays the main menu and takes the user's input. 
+    */  
     public int vendingMachineMenu(){
         
         io.print("1. Enter Money.");
@@ -34,7 +38,13 @@ public class VendingMachineView {
     }
     
     //LIBRARY FUNCTION
-    
+    /*
+    ** Function Name: displayVendableList
+    ** Return Type: void
+    ** Purpose: Aggregates two seperate lists based on the stock levels of the list of vendables passed
+    **          into this method. Displays the items as Available if thir current stock is above 0, or 
+    **          as Unavailable if their current stock is at 0. 
+    */  
     public void displayVendablesList(List<Vendable> vendablesList){
         
        // STREAM AND LAMBDAS
@@ -62,10 +72,20 @@ public class VendingMachineView {
         }
     }
     
+    /*
+    ** Function Name: getVendableName
+    ** Return Type: String
+    ** Purpose: Asks and receives the user's choice of vendable. 
+    */  
     public String getVendableName(){
         return io.readString("Please enter the Name of the item you want.");
     }
     
+    /*
+    ** Function Name: getUserCash
+    ** Return Type: String
+    ** Purpose: Asks and receives the user's money. 
+    */  
     public String getUserCash(){
         return io.readString("Please enter your money into the machine.");
     }

@@ -16,8 +16,14 @@ import java.time.LocalDateTime;
  */
 public class VendingMachineAuditDAOFileImpl implements VendingMachineAuditDAO{
     
+    //Declaring Variables
     public static final String AUDIT_FILE = "audit.txt";
     
+    /*
+    ** Function Name: writeAuditEntry
+    ** Return Type: Void
+    ** Purpose: Writes an entry to a file defined by AUDIT_FILE.  
+    */
     @Override
      public void writeAuditEntry(String entry) throws VendingMachineDAOException{
          PrintWriter out;

@@ -32,16 +32,31 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         this.change = change;
     }
 
+    /*
+    ** Function Name: updateVendables
+    ** Return Type: Vendable
+    ** Purpose: Passes to DAO updateVendables method. 
+    */  
     @Override
     public Vendable updateVendables(String vendableName, Vendable vendable) throws VendingMachineDAOException {
         return dao.updateVendables(vendableName, vendable); //Passthrough to method defined in DAO. 
     }
 
+    /*
+    ** Function Name: getAllVendables
+    ** Return Type: List<Vendable>
+    ** Purpose: Passes to DAO getAllVendables method. 
+    */  
     @Override
     public List<Vendable> getAllVendables() throws VendingMachineDAOException {
         return dao.getAllVendables(); //Passthrough to method defined in DAO. 
     }
 
+    /*
+    ** Function Name: getVendable
+    ** Return Type: Vendable
+    ** Purpose: Passes to DAO getVendable method if checkIfVendableExsts function passes. 
+    */   
     @Override
     public Vendable getVendable(String vendableName) throws VendingMachineDAOException,
                                                             VendingMachineItemDoesNotExistException{
@@ -50,6 +65,12 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         return dao.getVendable(vendableName); //Passthrough to method defined in DAO. 
     } 
 
+    /*
+    ** Function Name: vendVendable
+    ** Return Type: void
+    ** Purpose: Vends the passed in vendable if all the condition called by the checkIfInStock and 
+    **          checkIfSufficientFunds methods are passed. 
+    */   
     @Override
     public void vendVendable(Vendable vendable, String cash) throws VendingMachineInsufficientFundsException, 
                                                                     VendingMachineItemNotInStockException,
@@ -62,7 +83,12 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         auditDao.writeAuditEntry(vendable.getItemName() + " vended.");
         
     }
-    
+
+    /*
+    ** Function Name: makingChange
+    ** Return Type: void
+    ** Purpose: Calls the checkIfMoney fucntion and passes in the maybeMoney parameter.
+    */    
     @Override
     public void makingChange(BigDecimal remainingMoney) {
         BigDecimal zero = new BigDecimal("0.00");
@@ -75,13 +101,24 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         remainingChange = zero;        
     }
     
+    
+    /*
+    ** Function Name: isThatMoney
+    ** Return Type: void
+    ** Purpose: Calls the checkIfMoney fucntion and passes in the maybeMoney parameter.
+    */
     @Override
     public void isThatMoney(String maybeMoney) throws VendingMachineIsNotMoneyException {
         checkIfMoney(maybeMoney);
     }
     
     //helper function to check if item is in stock. 
-    
+    /*
+    ** Function Name: checkIfInStock
+    ** Return Type: void
+    ** Purpose: Makes sure the requested vendable is in stock.  
+    **          If the the vendable is not in stock, it throws a VendingMachineItemNotInStockException.. 
+    */    
     private void checkIfInStock(Vendable vendable) throws VendingMachineItemNotInStockException{
         
         if(vendable.getCurrentStock() <=0){
@@ -90,7 +127,12 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
     }
     
     // helper function to check if user had entered enough cash
-    
+    /*
+    ** Function Name: checkifSufficientFunds
+    ** Return Type: void
+    ** Purpose: Makes sure the amount of cash a user has submitted is enough for the requested item.  If the given dollar amount 
+    **          isn't enough, it throws a VendingMachineInsufficientFundsException. 
+    */
     private void checkIfSufficientFunds(Vendable vendable, String cash) throws VendingMachineInsufficientFundsException{
         
         BigDecimal userCash = new BigDecimal(cash);
@@ -103,7 +145,13 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
             
         }
     }
-    
+
+    /*
+    ** Function Name: checkIfMoney
+    ** Return Type: void
+    ** Purpose: Takes a string and determines if it is a dollar amount. If the string is not a dollar amount 
+    **          the method throws a VendingMachineItemDoesNotExistException. 
+    */
     private void checkIfMoney(String maybeMoney) throws VendingMachineIsNotMoneyException{
         
         boolean isMoney = true;
@@ -128,6 +176,12 @@ public class VendingMachineServiceLayerImpl implements VendingMachineServiceLaye
         
     }
     
+    /*
+    ** Function Name: checkifVendableExists
+    ** Return Type: void
+    ** Purpose: Takes a string and determines if an item with that name exists in a list made up on the itemName property
+    **          of all vendables. If a vendable does not exists the method throws a VendingMachineItemDoesNotExistException. 
+    */
     private void checkifVendableExists(String maybeVendable) throws VendingMachineDAOException, 
                                                                     VendingMachineItemDoesNotExistException{
         

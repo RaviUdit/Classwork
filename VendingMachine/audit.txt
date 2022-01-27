@@ -9,3 +9,4 @@
 2022-01-24T14:31:31.420180500 : Dasani vended.
 2022-01-24T15:17:52.216741800 : Sprite vended.
 2022-01-24T16:07:00.983943700 : Coca Cola vended.
+2022-01-27T11:50:43.300073800 : Barqs Root Beer vended.

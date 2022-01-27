@@ -9,6 +9,12 @@ package com.raviudit.vendingmachine.dao;
  *
  * @author raviu
  */
+
+/*
+    ** Function Name: VendingMachineDAOException
+    ** Type: Exception
+    ** Purpose: Throws Exception 
+    */
 public class VendingMachineDAOException extends Exception{
     
     public VendingMachineDAOException(String message){

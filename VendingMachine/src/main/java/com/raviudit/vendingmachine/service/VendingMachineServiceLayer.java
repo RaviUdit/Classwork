@@ -14,6 +14,12 @@ import java.util.List;
  *
  * @author raviu
  */
+
+ /*
+** Name: VendingMachineServiceLayer
+** Type: interface
+*/
+
 public interface VendingMachineServiceLayer {
     
     Vendable updateVendables(String vendableName, Vendable vendable) throws VendingMachineDAOException;
