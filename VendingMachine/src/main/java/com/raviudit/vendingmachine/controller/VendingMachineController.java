@@ -106,6 +106,7 @@ public class VendingMachineController {
         //declaring variables.
         boolean vendingMachineError = false;
         String userCash = "0.00";
+        String additionalCash = "0.00";
         String vendableName = "placeholderName";
         Vendable vendedVendable = new Vendable("placeholderVendable");
        
@@ -153,19 +154,46 @@ public class VendingMachineController {
                 
                 vendingMachineError = false;
             } catch(VendingMachineInsufficientFundsException | VendingMachineItemNotInStockException e){
-                vendingMachineError = true;
+                //vendingMachineError = true;
                
                 view.createErrorMessageBanner(e.getMessage());
                 
-                String additionalCash = view.getUserCash();
-                service.isThatMoney(additionalCash);
+                //Get Money post-error
+                do{
+                    try{
+                        additionalCash = view.getUserCash();
+                        service.isThatMoney(additionalCash);
+                        
+                        vendingMachineError = false;
+                    } catch (VendingMachineIsNotMoneyException ex){
+                        vendingMachineError = true;
+               
+                        view.createErrorMessageBanner(ex.getMessage());                      
+                    }
+                } while (vendingMachineError);
                 
+                //adding old money to new money
                 BigDecimal newCash = new BigDecimal(additionalCash);
                 BigDecimal oldCash = new BigDecimal(userCash);
                 userCash = newCash.add(oldCash).toString();
                 
-                vendableName = view.getVendableName();
-                vendedVendable = service.getVendable(vendableName);
+                //Get Vendable Post-Error
+                do{
+                    try{
+                        vendableName = view.getVendableName(); 
+                        vendedVendable = service.getVendable(vendableName);
+                
+                        vendingMachineError = false;
+                    } catch (VendingMachineItemDoesNotExistException ex){
+                        vendingMachineError = true;
+                        
+                        view.createErrorMessageBanner(ex.getMessage());
+                    }
+                } while (vendingMachineError);
+                //vendableName = view.getVendableName();
+                //vendedVendable = service.getVendable(vendableName);
+                
+                vendingMachineError = true; 
             }
         } while(vendingMachineError);
          
