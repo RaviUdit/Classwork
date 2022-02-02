@@ -5,4 +5,4 @@ Diet Coca Cola:&:1.00:&:20:&:19
 Diet Sprite:&:1.00:&:20:&:18
 Sprite:&:1.00:&:20:&:15
 Coca Cola:&:1.00:&:20:&:15
-Barqs Root Beer:&:1.00:&:20:&:19
+Barqs Root Beer:&:1.00:&:20:&:18

@@ -200,7 +200,7 @@ public class VendingMachineController {
     }
     
     /*
-    ** Function Name: main
+    ** Function Name: unknownCommand
     ** Return Type: Void
     ** Purpose: Calls view to create a banner if default in run loop is triggered.
     */

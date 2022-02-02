@@ -15,3 +15,4 @@
 2022-02-01T11:40:07.316589600 : Dasani vended.
 2022-02-01T11:44:09.564021900 : Diet Coca Cola vended.
 2022-02-01T11:59:39.642888500 : Coca Cola vended.
+2022-02-01T19:40:06.772673300 : Barqs Root Beer vended.
