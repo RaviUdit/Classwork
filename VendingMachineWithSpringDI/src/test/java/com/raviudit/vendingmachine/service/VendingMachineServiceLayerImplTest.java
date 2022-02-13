@@ -9,15 +9,14 @@ import com.raviudit.vendingmachine.dao.VendingMachineAuditDAO;
 import com.raviudit.vendingmachine.dao.VendingMachineDAO;
 import com.raviudit.vendingmachine.dao.VendingMachineDAOException;
 import com.raviudit.vendingmachine.dto.Vendable;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
  *
@@ -28,11 +27,14 @@ public class VendingMachineServiceLayerImplTest {
     private VendingMachineServiceLayer service;
     
     public VendingMachineServiceLayerImplTest() {
-        VendingMachineDAO dao = new VendingMachineDAOStubImpl();
-        VendingMachineAuditDAO auditDAO = new VendingMachineAuditDAOStubImpl();
-        VendingMachineChange change = new VendingMachineChange();
+//        VendingMachineDAO dao = new VendingMachineDAOStubImpl();
+//        VendingMachineAuditDAO auditDAO = new VendingMachineAuditDAOStubImpl();
+//        VendingMachineChange change = new VendingMachineChange();
+//        
+//        service = new VendingMachineServiceLayerImpl(dao, auditDAO, change);
         
-        service = new VendingMachineServiceLayerImpl(dao, auditDAO, change);
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
+        service = ctx.getBean("myService", VendingMachineServiceLayer.class);
     }
     
     @BeforeAll
